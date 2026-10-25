@@ -1,28 +1,41 @@
-import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+"use client";
 
-interface AccidentLocation {
-  accident: [number, number]; // [lng, lat]
-}
+import { CircleMarker, MapContainer, Popup, TileLayer } from "react-leaflet";
+import type { MapPoint } from "@/lib/demo-data";
 
-export default function AccidentMap() {
-  const [location, setLocation] = useState<AccidentLocation | null>(null);
+type AccidentMapProps = {
+  points: MapPoint[];
+};
 
-  useEffect(() => {
-    fetch("/api/accident-location")
-      .then((res) => res.json())
-      .then((data) => setLocation(data))
-      .catch((err) => console.error("Error fetching accident location", err));
-  }, []);
+export default function AccidentMap({ points }: AccidentMapProps) {
+  const first = points[0];
+  const center: [number, number] = first ? [first.lat, first.lng] : [-33.95, 18.47];
 
   return (
-    <MapContainer center={location?.accident.reverse() || [0, 0]} zoom={13} style={{ height: "400px", width: "100%" }}>
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {location && (
-        <Marker position={location.accident.reverse()}>
-          <Popup>Accident Location</Popup>
-        </Marker>
-      )}
+    <MapContainer center={center} zoom={11} style={{ height: "480px", width: "100%" }} scrollWheelZoom>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {points.map((point) => (
+        <CircleMarker
+          key={point.id}
+          center={[point.lat, point.lng]}
+          radius={point.kind === "close_call" ? 8 : 11}
+          pathOptions={{
+            color: point.kind === "close_call" ? "#fbbf24" : "#22d3ee",
+            fillColor: point.kind === "close_call" ? "#f59e0b" : "#06b6d4",
+            fillOpacity: 0.85,
+            weight: 2,
+          }}
+        >
+          <Popup>
+            <strong>{point.label}</strong>
+            <br />
+            {point.detail}
+          </Popup>
+        </CircleMarker>
+      ))}
     </MapContainer>
   );
 }

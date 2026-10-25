@@ -1,0 +1,244 @@
+{
+  "user": {
+    "id": "demo-user",
+    "username": "User",
+    "full_name": "Alex Naidoo",
+    "email": "alex.naidoo@activeguard.demo",
+    "id_number": "DEMO-ID-980101",
+    "phone_number": "0825550142",
+    "home_address": "12 Rhodes Avenue, Mowbray, Cape Town",
+    "dob": "1998-01-01",
+    "insurance_name": "Resembler Cover",
+    "insurance_number": "RC-2025-00418",
+    "license_plate": "CA 123-456"
+  },
+  "notifications": [
+    {
+      "notification_id": "0",
+      "incident_id": "0",
+      "message": "You witnessed a crash at 53 Pythonsux Way of a registered user, we have sent them the crash data. :)"
+    },
+    {
+      "notification_id": "1",
+      "incident_id": "1",
+      "message": "You were in an accident on the N2, and are possibly eligible for an insurance claim."
+    },
+    {
+      "notification_id": "2",
+      "incident_id": "2",
+      "message": "Your uploaded video footage for the accident on 21/03/25 has been processed and analysed."
+    },
+    {
+      "notification_id": "3",
+      "incident_id": "3",
+      "message": "A recent crash has occurred near you on 21 Sunshine Lane, Mowbray."
+    },
+    {
+      "notification_id": "4",
+      "incident_id": "4",
+      "message": "You were in an accident on Pienaar Road Milnerton, and are possibly eligible for an insurance claim."
+    }
+  ],
+  "incidents": [
+    {
+      "id": "0",
+      "title": "Witnessed crash",
+      "summary": "A registered driver was rear-ended at 53 Pythonsux Way. Dashcam footage from a nearby ActiveGuard user was shared with them. No claim is filed for the witness.",
+      "severity": 2,
+      "occurredAt": "2025-03-18 19:22",
+      "street": "53 Pythonsux Way, Rondebosch, Cape Town",
+      "lat": -33.9634,
+      "lng": 18.4712,
+      "weather": "Clear",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456"
+    },
+    {
+      "id": "1",
+      "title": "N2 collision",
+      "summary": "Slowing for queued traffic on the N2, the insured Mazda was struck from behind. The other driver left the scene. Dashcam marks the impact at 14:06 with dry conditions and moderate traffic.",
+      "severity": 3,
+      "occurredAt": "2025-03-21 14:06",
+      "street": "N2, near Pinelands, Cape Town",
+      "lat": -33.9312,
+      "lng": 18.5154,
+      "weather": "Clear",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456"
+    },
+    {
+      "id": "2",
+      "title": "Footage processed",
+      "summary": "Uploaded footage from 21 March 2025 was analysed. A single vehicle drifted onto the shoulder on Rhodes Drive and recovered without a collision.",
+      "severity": 1,
+      "occurredAt": "2025-03-21 08:41",
+      "street": "Rhodes Drive, M3, Cape Town",
+      "lat": -33.9738,
+      "lng": 18.4486,
+      "weather": "Overcast",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456"
+    },
+    {
+      "id": "3",
+      "title": "Nearby crash",
+      "summary": "A two-car crash was reported on Sunshine Lane, Mowbray. The insured vehicle was not involved. The alert is for local awareness.",
+      "severity": 2,
+      "occurredAt": "2025-03-22 17:15",
+      "street": "21 Sunshine Lane, Mowbray, Cape Town",
+      "lat": -33.9476,
+      "lng": 18.4768,
+      "weather": "Wet road",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456"
+    },
+    {
+      "id": "4",
+      "title": "Milnerton intersection",
+      "summary": "At the Pienaar Road intersection a car turned across the insured vehicle. Front bumper and left headlamp were damaged. Both drivers exchanged details. Eligible for a claim.",
+      "severity": 3,
+      "occurredAt": "2025-03-25 07:52",
+      "street": "Pienaar Road, Milnerton, Cape Town",
+      "lat": -33.8708,
+      "lng": 18.5124,
+      "weather": "Clear",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456"
+    }
+  ],
+  "closeCalls": [
+    {
+      "id": "cc-1",
+      "title": "Hard brake on Main Road",
+      "message": "Close call: a taxi changed lanes without signalling on Main Road, Observatory. The driver braked hard. No contact.",
+      "recordedAt": "2025-03-19 16:05",
+      "lat": -33.9374,
+      "lng": 18.4689
+    },
+    {
+      "id": "cc-2",
+      "title": "Near miss on De Waal Drive",
+      "message": "Close call: an oncoming vehicle crossed the centre line on De Waal Drive. The insured car moved left and avoided contact.",
+      "recordedAt": "2025-03-24 21:18",
+      "lat": -33.9396,
+      "lng": 18.4548
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-n2",
+      "incidentId": "1",
+      "status": "ready",
+      "insurer": "Resembler Cover",
+      "policyNumber": "RC-2025-00418",
+      "claimantName": "Alex Naidoo",
+      "email": "alex.naidoo@activeguard.demo",
+      "phone": "0825550142",
+      "idNumber": "DEMO-ID-980101",
+      "homeAddress": "12 Rhodes Avenue, Mowbray, Cape Town",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456",
+      "accidentDate": "2025-03-21",
+      "accidentTime": "14:06",
+      "location": "N2, near Pinelands, Cape Town",
+      "weather": "Clear",
+      "description": "Slowing for queued traffic on the N2, the insured Mazda CX-3 was struck from behind. The other driver left the scene. Dashcam footage places the impact at 14:06 in clear weather. Rear bumper and boot lid were damaged. No injuries reported."
+    },
+    {
+      "id": "claim-milnerton",
+      "incidentId": "4",
+      "status": "ready",
+      "insurer": "Resembler Cover",
+      "policyNumber": "RC-2025-00418",
+      "claimantName": "Alex Naidoo",
+      "email": "alex.naidoo@activeguard.demo",
+      "phone": "0825550142",
+      "idNumber": "DEMO-ID-980101",
+      "homeAddress": "12 Rhodes Avenue, Mowbray, Cape Town",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456",
+      "accidentDate": "2025-03-25",
+      "accidentTime": "07:52",
+      "location": "Pienaar Road, Milnerton, Cape Town",
+      "weather": "Clear",
+      "description": "At the Pienaar Road intersection another car turned across the path of the insured vehicle. The front bumper and left headlamp were damaged. Both drivers exchanged details. Dashcam footage is attached to this demo claim."
+    },
+    {
+      "id": "claim-rhodes",
+      "incidentId": "2",
+      "status": "draft",
+      "insurer": "Resembler Cover",
+      "policyNumber": "RC-2025-00418",
+      "claimantName": "Alex Naidoo",
+      "email": "alex.naidoo@activeguard.demo",
+      "phone": "0825550142",
+      "idNumber": "DEMO-ID-980101",
+      "homeAddress": "12 Rhodes Avenue, Mowbray, Cape Town",
+      "vehicle": "Mazda CX-3",
+      "registration": "CA 123-456",
+      "accidentDate": "2025-03-21",
+      "accidentTime": "08:41",
+      "location": "Rhodes Drive, M3, Cape Town",
+      "weather": "Overcast",
+      "description": "Analysed dashcam footage shows the vehicle drifting onto the shoulder on Rhodes Drive and recovering. There was no collision. This draft is kept so the claim form can be opened from the processed-footage notification."
+    }
+  ],
+  "mapPoints": [
+    {
+      "id": "0",
+      "kind": "incident",
+      "label": "Witnessed crash",
+      "detail": "53 Pythonsux Way, Rondebosch",
+      "lat": -33.9634,
+      "lng": 18.4712
+    },
+    {
+      "id": "1",
+      "kind": "incident",
+      "label": "N2 collision",
+      "detail": "N2, near Pinelands",
+      "lat": -33.9312,
+      "lng": 18.5154
+    },
+    {
+      "id": "2",
+      "kind": "incident",
+      "label": "Footage processed",
+      "detail": "Rhodes Drive, M3",
+      "lat": -33.9738,
+      "lng": 18.4486
+    },
+    {
+      "id": "3",
+      "kind": "incident",
+      "label": "Nearby crash",
+      "detail": "21 Sunshine Lane, Mowbray",
+      "lat": -33.9476,
+      "lng": 18.4768
+    },
+    {
+      "id": "4",
+      "kind": "incident",
+      "label": "Milnerton intersection",
+      "detail": "Pienaar Road, Milnerton",
+      "lat": -33.8708,
+      "lng": 18.5124
+    },
+    {
+      "id": "cc-1",
+      "kind": "close_call",
+      "label": "Hard brake on Main Road",
+      "detail": "Main Road, Observatory",
+      "lat": -33.9374,
+      "lng": 18.4689
+    },
+    {
+      "id": "cc-2",
+      "kind": "close_call",
+      "label": "Near miss on De Waal Drive",
+      "detail": "De Waal Drive",
+      "lat": -33.9396,
+      "lng": 18.4548
+    }
+  ]
+}
