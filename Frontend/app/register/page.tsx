@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation"
-
 import Link from "next/link";
+import { registerUser } from "@/lib/api";
 
 export default function Register() {
   const [fullName, setFullName] = useState("");
@@ -17,29 +17,17 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/user/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: fullName,
-          fullName,
-          email,
-          password,
-          dob,
-        }),
+      const data = await registerUser({
+        username: fullName,
+        fullName,
+        email,
+        password,
+        dob,
       });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("Registration successful!");
-        router.push("/accountsetup")
-      } else {
-        setMessage(data.message || "Registration failed.");
-      }
+      setMessage(data.message);
+      router.push("/accountsetup");
     } catch (error) {
-      setMessage("An error occurred. Please try again.");
+      setMessage(error instanceof Error ? error.message : "An error occurred. Please try again.");
     }
   };
 
@@ -51,7 +39,11 @@ export default function Register() {
         </h2>
         <p className="text-gray-300 mb-6 text-center">Create your account below</p>
 
-        {message && <p className="text-center text-green-400 mb-4">{message}</p>}
+        {message && (
+          <p className={`text-center mb-4 ${message.toLowerCase().includes("success") ? "text-green-400" : "text-red-400"}`}>
+            {message}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

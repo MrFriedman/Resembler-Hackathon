@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation"
+import { updateAccount } from "@/lib/api";
 
 export default function AccountSetup() {
   const [full_name, setFullName] = useState("");
@@ -18,31 +19,19 @@ export default function AccountSetup() {
     e.preventDefault();
     
     try {
-      const response = await fetch("http://localhost:5000/api/user/update-information", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          full_name,
-          id_number,
-          phone_number,
-          home_address,
-          insurance_name,
-          insurance_number,
-          license_plate
-        }),
+      const data = await updateAccount({
+        full_name,
+        id_number,
+        phone_number,
+        home_address,
+        insurance_name,
+        insurance_number,
+        license_plate,
       });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("Registration successful!");
-        router.push("/dashboard")
-      } else {
-        setMessage(data.message || "Registration failed.");
-      }
+      setMessage(data.message);
+      router.push("/dashboard");
     } catch (error) {
-      setMessage("An error occurred. Please try again.");
+      setMessage(error instanceof Error ? error.message : "An error occurred. Please try again.");
     }
   };
 
@@ -54,7 +43,11 @@ export default function AccountSetup() {
         </h2>
         <p className="text-gray-300 mb-6 text-center">Enter your personal details below</p>
 
-        {message && <p className="text-center text-green-400 mb-4">{message}</p>}
+        {message && (
+          <p className={`text-center mb-4 ${/saved|success/i.test(message) ? "text-green-400" : "text-red-400"}`}>
+            {message}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

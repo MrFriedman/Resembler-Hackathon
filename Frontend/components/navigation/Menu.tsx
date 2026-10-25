@@ -3,13 +3,17 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { Menu as MenuIcon, X as CloseIcon } from "lucide-react";
 import logo from '@/public/logo.svg';
 import Image from "next/image";
+import { isDemoMode } from "@/lib/demo";
 
 function Menu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const demo = isDemoMode();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -24,6 +28,12 @@ function Menu() {
           <h2 className="text-2xl font-bold tracking-wide text-cyan-400">
             ActiveGuard
           </h2>
+          {session?.user?.name && (
+            <span className="ml-3 hidden text-xs text-gray-400 sm:inline">
+              {session.user.name}
+              {demo ? " · demo" : ""}
+            </span>
+          )}
         </div>
 
         {/* Hamburger Menu for Small Screens */}
